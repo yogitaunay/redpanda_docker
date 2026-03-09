@@ -47,10 +47,11 @@ services:
       retries: 5
 
   console:
-    image: docker.redpanda.com/redpandadata/console:latest
+    image: ://redpanda.com
     container_name: redpanda-console
-    entrypoint: /bin/sh
-    command: -c "echo \"kafka: { brokers: ['redpanda:9092'] }\" > /tmp/config.yml; /app/console --config.filepath /tmp/config.yml"
+    # Menggunakan env var agar tidak perlu lagi perintah 'echo' yang rumit
+    environment:
+      - KAFKA_BROKERS=redpanda:9092
     ports:
       - "8080:8080"
     depends_on:
