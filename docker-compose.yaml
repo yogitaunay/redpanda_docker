@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   redpanda:
     image: docker.redpanda.com/redpandadata/redpanda:v23.3.1
@@ -23,7 +21,7 @@ services:
       retries: 5
 
   console:
-    image: ://redpanda.com
+    image: docker.redpanda.com/redpandadata/console:latest
     container_name: redpanda-console
     # Menggunakan env var agar tidak perlu lagi perintah 'echo' yang rumit
     environment:
